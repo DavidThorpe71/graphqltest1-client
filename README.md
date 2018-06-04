@@ -4,4 +4,4 @@ You can find the most recent version of the create-react-app guide [here](https:
 
 ## Graph QL tester app One
 1. Install apollo client devtools:
-  {https://github.com/apollographql/apollo-client-devtools}
+  https://github.com/apollographql/apollo-client-devtools
