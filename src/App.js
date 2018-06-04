@@ -7,6 +7,10 @@ const App = ({ data }) => <h1>{data.hi}</h1>
 const hiQuery = gql`
 {
   hi
+  users {
+    _id
+    name
+  }
 }
 `;
 
