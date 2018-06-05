@@ -6,22 +6,16 @@ const App = ({ data }) => {
   if (data.loading) return null;
   return (
     <div>
-      <h1>{data.hi}</h1>
-      <ul>
-        {data.resolutions.map(resolution => (
-          <li key={resolution._id}>{resolution.name}</li>
-        )
-        )}
-      </ul>
+      {data.resolutions.map(resolution => (
+        <h3 key={resolution._id}>{resolution.name}</h3>
+      )
+      )}
     </div>
   )
 }
 
-
-
 const hiQuery = gql`
 {
-  hi
   resolutions {
     _id
     name
