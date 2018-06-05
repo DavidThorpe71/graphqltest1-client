@@ -10,7 +10,6 @@ const createResolution = gql`
   }
 `;
 
-
 class ResolutionForm extends Component {
   submitForm = () => {
     console.log(this.name.value);
@@ -27,6 +26,7 @@ class ResolutionForm extends Component {
   }
 }
 
+// Name in the below defines the name in this.props, otherwise just called mutation
 export default graphql(createResolution, {
   name: "createResolution"
 })(ResolutionForm);
