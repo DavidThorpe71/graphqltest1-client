@@ -2,12 +2,15 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import ResolutionForm from './components/ResolutionForm';
+import NewUserForm from './components/NewUserForm';
+import './App.css';
 
 const App = ({ data }) => {
   if (data.loading) return null;
   return (
     <div>
-      <ResolutionForm />
+      <ResolutionForm refetch={data.refetch} />
+      <NewUserForm />
       <div className="resolutions-list">
         {data.resolutions.map(resolution => (
           <h3 key={resolution._id}>{resolution.name}</h3>
