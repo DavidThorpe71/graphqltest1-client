@@ -5,14 +5,14 @@ import ResolutionForm from './components/ResolutionForm';
 import NewUserForm from './components/NewUserForm';
 import './App.css';
 
-const App = ({ data }) => {
-  if (data.loading) return null;
+const App = ({ loading, resolutions }) => {
+  if (loading) return null;
   return (
     <div>
-      <ResolutionForm refetch={data.refetch} />
+      <ResolutionForm />
       <NewUserForm />
       <div className="resolutions-list">
-        {data.resolutions.map(resolution => (
+        {resolutions.map(resolution => (
           <h3 key={resolution._id}>{resolution.name}</h3>
         )
         )}
@@ -21,8 +21,8 @@ const App = ({ data }) => {
   )
 }
 
-const hiQuery = gql`
-{
+const resolutionsQuery = gql`
+query Resolutions {
   resolutions {
     _id
     name
@@ -31,5 +31,7 @@ const hiQuery = gql`
 `;
 
 export default graphql(
-  hiQuery
+  resolutionsQuery, {
+    props: ({ data }) => ({ ...data })
+  }
 )(App);
