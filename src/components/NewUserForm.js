@@ -3,20 +3,19 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
 const createUser = gql`
-  mutation createUser {
-    createUser {
+  mutation createUser($name: String!, $password: String!, $email: String!) {
+    createUser(name: $name, password: $password, email: $email) {
       _id
     }
   }
 `;
 
 class NewUserForm extends Component {
-
   state = {
-    firstName: '',
-    lastName: '',
-    dob: '',
-    height: ''
+    name: '',
+    password: '',
+    confirmPassword: '',
+    email: ''
   }
 
   handleChange = (e) => {
@@ -25,35 +24,41 @@ class NewUserForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // this.props.createResolution();
-    this.setState({
-      firstName: '',
-      lastName: '',
-      dob: '',
-      height: ''
-    })
+
+    const { name, password, email } = this.state
+    this.props.createUser({
+      variables: {
+        name,
+        password,
+        email
+      }
+    });
+    // this.setState({
+    //   name: '',
+    //   password: '',
+    //   confirmPassword: '',
+    //   email: ''
+    // })
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>First Name
-          <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
+          <label>Name
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
           </label>
-          <label>Last Name
-          <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
+          <label>Email
+          <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
           </label>
-          <label>Date of birth
-          <input type="text" name="dob" value={this.state.dob} onChange={this.handleChange} />
+          <label>Password
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
           </label>
-          <label>Height
-          <input type="text" name="height" value={this.state.height} onChange={this.handleChange} />
+          <label>Confirm password
+          <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
-
-
       </div>
     )
   }
