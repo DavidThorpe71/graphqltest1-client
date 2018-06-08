@@ -6,6 +6,8 @@ const createUser = gql`
   mutation createUser($name: String!, $password: String!, $email: String!) {
     createUser(name: $name, password: $password, email: $email) {
       _id
+      name
+      email
     }
   }
 `;
@@ -33,12 +35,6 @@ class NewUserForm extends Component {
         email
       }
     });
-    // this.setState({
-    //   name: '',
-    //   password: '',
-    //   confirmPassword: '',
-    //   email: ''
-    // })
   }
 
   render() {
@@ -60,6 +56,7 @@ class NewUserForm extends Component {
           <input type="submit" value="Submit" />
         </form>
       </div>
+
     )
   }
 }
