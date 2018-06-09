@@ -40,6 +40,7 @@ class NewUserForm extends Component {
   render() {
     return (
       <div>
+        <h3>Register New User Form</h3>
         <form onSubmit={this.handleSubmit}>
           <label>Name
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />

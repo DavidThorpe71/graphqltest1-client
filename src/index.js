@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { ApolloProvider } from "react-apollo";
+import { ApolloLink } from 'apollo-link';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from "apollo-cache-inmemory";

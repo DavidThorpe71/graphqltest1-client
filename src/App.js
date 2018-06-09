@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import ResolutionForm from './components/ResolutionForm';
 import NewUserForm from './components/NewUserForm';
 import './App.css';
+import LoginForm from './components/LoginForm';
 
 const App = ({ loading, resolutions }) => {
   if (loading) return null;
@@ -11,9 +12,11 @@ const App = ({ loading, resolutions }) => {
     <div>
       <ResolutionForm />
       <NewUserForm />
+      <LoginForm />
       <div className="resolutions-list">
+        <h3>Resolutions</h3>
         {resolutions.map(resolution => (
-          <h3 key={resolution._id}>{resolution.name}</h3>
+          <p key={resolution._id}>{resolution.name}</p>
         )
         )}
       </div>

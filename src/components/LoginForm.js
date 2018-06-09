@@ -3,9 +3,9 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
 const login = gql`
-  query login {
+  mutation login {
     login {
-      userName
+      email
       password
     }
   }
@@ -14,7 +14,7 @@ const login = gql`
 class LoginForm extends Component {
 
   state = {
-    userName: '',
+    email: '',
     password: '',
   }
 
@@ -26,7 +26,7 @@ class LoginForm extends Component {
     e.preventDefault();
     // this.props.createResolution();
     this.setState({
-      userName: '',
+      email: '',
       password: '',
     })
   }
@@ -34,16 +34,15 @@ class LoginForm extends Component {
   render() {
     return (
       <div>
+        <h3>Login Form</h3>
         <form onSubmit={this.handleSubmit}>
-          <label>Username
-          <input type="text" name="userName" value={this.state.userName} onChange={this.handleChange} />
+          <label>Email
+          <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
           </label>
           <label>Password
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
           </label>
-          <label>Confirm password
-          <input type="text" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} />
-          </label>
+          <button type="submit">Login</button>
         </form>
       </div>
     )
